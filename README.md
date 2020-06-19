@@ -1,11 +1,49 @@
 
 # Group_E_Snakes_and_Ladders
-Game Project based on C programming language
 
+We will be simulating game of snakes and ladders the using 
+C Programming language. 
 
-Purpose: Due to COVID 19 pandemic and its effects, people are isolated, stressed and worried. To provide a feeling of
-competency, autonomy and to relieve stress, we propose a game as the best time killing application. We chose
-snakes and ladders for our project as it is a classic and easy game to play. We will be simulating the game using 
-C Programming language. The main idea is to reciprocate a board game into an online game application for easy access. 
+# Organisation
+Carleton University
 
-There are some rules to play this game.
+# Authors
+- Vidushi Gupta Vidushigupta@cmail.carleton.ca
+- Diksha Saini Dikshasaini@cmail.carleton.ca
+- Sayali Dhokar Sayalidhokar@cmail.carleton.ca
+- Rupneet Kaur Gill Rupneetkaurgill@cmail.carleton.ca
+
+# Brief Description
+
+Below are the rules of the game under which we will design an application.
+1. Snakes and ladders game is a grid of 10 x10 squares. The entire grid is numbered from 1 to 100.
+2. *It is a multi-player game. 2 or more players are required.*
+3. Each player takes turns to roll a six-sided dice. The player moves as many squares forward as     number on the dice. A player gets a consecutive turn if player gets a six.
+4. Each player starts at 1. Each player needs to roll 1 or a 6 to start playing the game.
+5. If a player’s counter lands at bottom of ladder, the player moves to top of ladder.
+6. If a player’s counter lands on a snake, then player must slide down the snake.
+7. Player whose counter reaches number 100 first is the winner.
+
+# File Organisation
+
+1.bin: This folder has 
+
+2.build: This folder has all the object files generated using make file. 
+
+3.doc: This folder contains documents with instructions for users and developers.
+
+4. Include: This folder contains header files used in application
+
+5. lib: 
+
+6. Src: 
+
+7. Test: It has following files : a) Test.c
+
+# Installation
+
+Install to play. Instructions to install are in *usermanuallink*.
+
+# Detailed Instructions
+
+Detailed instructions for user is found in *usermanuallink*. Detailed instructions for developer is found in *developermanuallink*.
