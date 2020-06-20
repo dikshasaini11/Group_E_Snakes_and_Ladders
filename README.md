@@ -26,13 +26,13 @@ Below are the rules of the game under which we will design an application.
 
 # File Organisation
 
-1.bin: This folder has executable files and data files
+1.bin: This folder has executable files and data files.
 
 2.build: This folder has all the object files generated using make file. 
 
 3.doc: This folder contains documents with instructions for users and developers.
 
-4. Include: This folder contains header files used in application
+4. Include: This folder contains header files used in application.
 
 5. lib: 
 
