@@ -84,6 +84,7 @@ int locate(int x,int y);
 *prints the name at given position.
 */	
 void display_fstscr();
+void draw_layout();
 
 
 /**
