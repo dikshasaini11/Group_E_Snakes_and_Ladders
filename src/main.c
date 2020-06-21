@@ -230,12 +230,12 @@ int locate(int x,int y)
 }
 
 void draw_layout() {
-		HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-		SetConsoleTextAttribute(hConsole, 14); // yellow color
+	HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, 14); //  Sets yellow color for layout
 
 		///Prints squares with values from  1 to 99 and last square with specific symbol to show final point.
 
-		printf( "\xC9\xCD\xCD\xCD\xCD"	"\xCB\xCD\xCD\xCD\xCD"	"\xCB\xCD\xCD\xCD\xCD"
+	printf( "\xC9\xCD\xCD\xCD\xCD"	"\xCB\xCD\xCD\xCD\xCD"	"\xCB\xCD\xCD\xCD\xCD"
 			    "\xCB\xCD\xCD\xCD\xCD"	"\xCB\xCD\xCD\xCD\xCD"	"\xCB\xCD\xCD\xCD\xCD"
 			    "\xCB\xCD\xCD\xCD\xCD"	"\xCB\xCD\xCD\xCD\xCD"	"\xCB\xCD\xCD\xCD\xCD"
 			    "\xCB\xCD\xCD\xCD\xCD"	"\xBB" );
