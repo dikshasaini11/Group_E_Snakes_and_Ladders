@@ -56,7 +56,12 @@ typedef struct{
     char password[10];
 }players_t;
 
-	
+typedef struct{
+    int startpt;
+    int endpt;
+    int xpos;
+    int ypos;
+    }position_t;
 /**
 *All the functions are declared here 
 *which will be used in the game for further processing
