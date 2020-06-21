@@ -31,6 +31,7 @@ contains all header files and functions required for the project
 * to run the program by choosing choices from menu options
 * names and their keyboard ASCII values are given
 */
+
 /* Macros Definition for keyboard use */
 #define SPACE 32
 #define ENTER 13
@@ -78,6 +79,12 @@ typedef struct{
 */
 int locate(int x,int y);
 
+/** Function to display the first screen of the game 
+*Takes location in form of x,y coordinates 
+*prints the name at given position.
+*/	
+void display_fstscr();
+
 
 /**
 * /brief variable declaration before main function begins
@@ -114,7 +121,7 @@ int main()
 	
     if (startup==46){
         /*First screen function is called and the screen automatically moves to main menu screen*/
-        //display_fstscr();  works when display_fstscr() is included
+        display_fstscr();  
         startup=0;
 		sleep(4);
     }
@@ -229,6 +236,34 @@ int locate(int x,int y)
     SetConsoleCursorPosition(hConsole,coord);
 }
 
+/**
+*display_fstscr() displays the very first screen of the project
+*GetStdHandle() is used for standard output on console window which is used to color text on the screen
+*
+*/
+
+void display_fstscr()
+{
+	HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, 14);
+    
+	system("clear"); 
+	locate (48,17);
+	printf("*********************************************************************\n");
+        printf("\t\t\t\t\t\t                   Snakes and Ladders Game                     \n");
+	printf("\t\t\t\t\t\t*********************************************************************\n");
+            locate(30,30);      
+			printf("\t\t\t\t\t\tLOADING.......\n");
+            locate (50,45);
+			printf ("Programmed By (Group E)\n");
+         
+}
+
+
+/** 
+* Draws layout of the game board with yellow colour.
+* GetStdHandle() is used for standard output on console window which is used to color the grid of layout. 
+*/
 void draw_layout() {
 	HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hConsole, 14); //  Sets yellow color for layout
