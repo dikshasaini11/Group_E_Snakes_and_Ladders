@@ -56,12 +56,16 @@ typedef struct{
     char password[10];
 }players_t;
 
+/**
+*Structure to define starting point, ending point and position for snakes and ladders
+*/
 typedef struct{
     int startpt;
     int endpt;
     int xpos;
     int ypos;
     }position_t;
+
 /**
 *All the functions are declared here 
 *which will be used in the game for further processing
