@@ -1,24 +1,24 @@
 
 # Group_E_Snakes_and_Ladders
 
-We will be simulating game of snakes and ladders the using 
+We will be simulating game of snakes and ladders using the
 C Programming language. 
 
 # Organisation
 Carleton University
 
 # Authors
-- Vidushi Gupta Vidushigupta@cmail.carleton.ca
 - Diksha Saini Dikshasaini@cmail.carleton.ca
 - Sayali Dhokar Sayalidhokar@cmail.carleton.ca
 - Rupneet Kaur Gill Rupneetkaurgill@cmail.carleton.ca
+- Vidushi Gupta Vidushigupta@cmail.carleton.ca
 
 # Brief Description
 
 Below are the rules of the game under which we will design an application.
 1. Snakes and ladders game is a grid of 10 x10 squares. The entire grid is numbered from 1 to 100.
-2. *It is a multi-player game. 2 or more players are required.*
-3. Each player takes turns to roll a six-sided dice. The player moves as many squares forward as     number on the dice. A player gets a consecutive turn if player gets a six.
+2. *It is a multi-player game. 2 players are required.*
+3. Each player takes turns to roll a six-sided dice. The player moves as many squares forward as number on the dice. A player gets a consecutive turn if player gets a six.
 4. Each player starts at 1. Each player needs to roll 1 or a 6 to start playing the game.
 5. If a player’s counter lands at bottom of ladder, the player moves to top of ladder.
 6. If a player’s counter lands on a snake, then player must slide down the snake.
@@ -26,24 +26,36 @@ Below are the rules of the game under which we will design an application.
 
 # File Organisation
 
-1.bin: This folder has 
+1.bin: This folder has executable files and data files.
 
 2.build: This folder has all the object files generated using make file. 
 
 3.doc: This folder contains documents with instructions for users and developers.
 
-4. Include: This folder contains header files used in application
+4.Include: This folder contains header files used in application.
 
-5. lib: 
+5.lib: This folder contains files related to libraries used in the project.
 
-6. Src: 
+6.Src: This file contains the source code for the project with other .c files.
 
-7. Test: It has following files : a) Test.c
+7.Test: It has following files : a) Test.c
 
 # Installation
 
-Install to play. Instructions to install are in *usermanuallink*.
+Instructions to install are in *usermanuallink*.
+
+# Usage
+
+To run, you must first install it. Further, you can follow instructions mentioned in *usermanuallink*.
+
 
 # Detailed Instructions
 
-Detailed instructions for user is found in *usermanuallink*. Detailed instructions for developer is found in *developermanuallink*.
+Detailed instructions for user is found in *usermanuallink*. 
+Detailed instructions for developer is found in *developermanuallink*.
+
+# Acknowledgement
+
+Thanks to Dr. Cristina Ruiz Martin for providing guidance on how to develop the software.
+
+
