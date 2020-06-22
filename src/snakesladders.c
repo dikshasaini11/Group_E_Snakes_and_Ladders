@@ -263,6 +263,7 @@ void display_fstscr()
 * GetStdHandle() is used for standard output on console window which is used to color the grid of layout. 
 */
 void draw_layout() {
+	system("clear");
 	HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hConsole, 14); //  Sets yellow color for layout
 
