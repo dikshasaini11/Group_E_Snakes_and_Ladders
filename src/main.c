@@ -84,8 +84,9 @@ int locate(int x,int y);
 *prints the name at given position.
 */	
 void display_fstscr();
-void draw_layout();
 
+/** function to draw a layout for game which is a grid of 10x10.*/
+void draw_layout();
 
 /**
 * /brief variable declaration before main function begins
@@ -110,16 +111,10 @@ int startup=46;
 
 int main()
 {
-	/*GetStdHandle() is used for standard output on console window which is used to color text on the screen*/
-	HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(hConsole, 206); 
-
     /* Variables are declared to take input from the user*/	
     int option;   
     char choice;  
-    
-	SetConsoleTextAttribute(hConsole, 206); 
-	
+  
     if (startup==46){
         /*First screen function is called and the screen automatically moves to main menu screen*/
         display_fstscr();  
@@ -229,8 +224,7 @@ int main()
 */
 int locate(int x,int y)
 {
-	HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(hConsole, 14);
+    HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     COORD coord={0,0};
     coord.X=x;
     coord.Y=y;
@@ -255,7 +249,7 @@ void display_fstscr()
 	printf("\t\t\t\t\t\t*********************************************************************\n");
             locate(30,30);      
 			printf("\t\t\t\t\t\tLOADING.......\n");
-            locate (50,45);
+            locate (105,35);
 			printf ("Programmed By (Group E)\n");
          
 }
