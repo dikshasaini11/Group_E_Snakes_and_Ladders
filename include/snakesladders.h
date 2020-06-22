@@ -1,5 +1,5 @@
 #ifndef snakesladders_H
-#define layout_H
+#define snakesladders_H
 
 /**  @brief Function prototypes to draw a game board
  *
