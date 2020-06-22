@@ -85,8 +85,11 @@ int locate(int x,int y);
 */	
 void display_fstscr();
 
-/** function to draw a layout for game which is a grid of 10x10.*/
+/** function to draw a layout for game which is a grid of 10x10*/
 void draw_layout();
+
+/** function to draw snakes and ladders on the board */
+int draw_snakesladders();
 
 /**
 * /brief variable declaration before main function begins
@@ -433,5 +436,99 @@ void draw_layout() {
 				"\xCA\xCD\xCD\xCD\xCD"	"\xCA\xCD\xCD\xCD\xCD"	"\xCA\xCD\xCD\xCD\xCD"
 				"\xCA\xCD\xCD\xCD\xCD"	"\xBC");
         putchar('\n');
+	draw_snakesladders();
 
 	}
+
+/**Draws snakes and ladders on the grid of 10x10.
+*Snakes are displayed in red colour, ladders are displayed in green colour.
+*GetStdHandle() is used for standard output on console window which is used to color snakes and ladders.
+*Positions of snakes and ladders are read from file 'snakesladders.dat' and stored in structure 'position_t'.*/
+int draw_snakesladders()
+{
+    HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    position_t pos;
+
+    /*Opening dat file to read data*/
+    FILE *file;
+    file=fopen("snakesladders.dat","r");
+
+   /* Loop to check end of file.It reads integer values from first four columns.*/
+   while (EOF != fscanf(file,"%d%d%d%d",&pos.startpt,&pos.endpt,&pos.xpos,&pos.ypos))
+   {
+        /*Decides whether it is a starting point of snake or ladder*/
+        //For ladder
+        if(pos.startpt<pos.endpt)
+        {
+            SetConsoleTextAttribute(hConsole,FOREGROUND_INTENSITY | FOREGROUND_GREEN);
+
+            /*Moves cursor to specific position to draw ladder.*/
+            locate(pos.xpos,pos.ypos);
+            printf("<##");
+            pos.xpos += 2;
+
+            /*To decide height of ladder*/
+            if(pos.xpos % 2 == 0)
+            {
+                for(int i=0;i<6;i++)
+                {
+                   pos.ypos -= 1;
+                   locate(pos.xpos,pos.ypos);
+                   printf("#");
+                }
+            }
+            else
+            {
+                for(int i=0;i<8;i++)
+                {
+                   pos.ypos -= 1;
+                   locate(pos.xpos,pos.ypos);
+                   printf("#");
+                }
+
+            }
+         }
+        /*For snakes*/
+        else
+        {
+            SetConsoleTextAttribute(hConsole,FOREGROUND_INTENSITY | FOREGROUND_RED);
+            /*Moves cursor to specific position to draw snakes*/
+            locate(pos.xpos,pos.ypos);
+            printf("<**");
+            pos.xpos += 2;
+
+            /*To decide length of snake*/
+            if(pos.xpos %2 == 0)
+            {
+              for(int i=0;i<5;i++)
+               {
+
+                pos.ypos += 1;
+                locate(pos.xpos,pos.ypos);
+                printf("*");
+               }
+                pos.ypos += 1;
+                locate(pos.xpos,pos.ypos);
+                printf("t");
+            }
+            else
+            {
+                for(int i=0;i<9;i++)
+                {
+                    pos.ypos += 1;
+                    locate(pos.xpos,pos.ypos);
+                    printf("*");
+                }
+                pos.ypos += 1;
+                locate(pos.xpos,pos.ypos);
+                printf("t");
+            }
+
+        }
+    }
+
+   locate(50,20);
+   SetConsoleTextAttribute(hConsole,FOREGROUND_BLUE+FOREGROUND_RED+FOREGROUND_GREEN+FOREGROUND_RED+FOREGROUND_RED);
+   return 0;
+}
+
