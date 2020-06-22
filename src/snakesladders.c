@@ -455,12 +455,10 @@ int draw_snakesladders()
     file=fopen("snakesladders.dat","r");
 
    /* Loop to check end of file.It reads integer values from first four columns.*/
-   while (EOF != fscanf(file,"%d%d%d%d",&pos.startpt,&pos.endpt,&pos.xpos,&pos.ypos))
-   {
+   while (EOF != fscanf(file,"%d%d%d%d",&pos.startpt,&pos.endpt,&pos.xpos,&pos.ypos)){
         /*Decides whether it is a starting point of snake or ladder*/
         //For ladder
-        if(pos.startpt<pos.endpt)
-        {
+        if(pos.startpt<pos.endpt){
             SetConsoleTextAttribute(hConsole,FOREGROUND_INTENSITY | FOREGROUND_GREEN);
 
             /*Moves cursor to specific position to draw ladder.*/
@@ -469,19 +467,14 @@ int draw_snakesladders()
             pos.xpos += 2;
 
             /*To decide height of ladder*/
-            if(pos.xpos % 2 == 0)
-            {
-                for(int i=0;i<6;i++)
-                {
+            if(pos.xpos % 2 == 0){
+                for(int i=0;i<6;i++){
                    pos.ypos -= 1;
                    locate(pos.xpos,pos.ypos);
                    printf("#");
                 }
-            }
-            else
-            {
-                for(int i=0;i<8;i++)
-                {
+            }else{
+                for(int i=0;i<8;i++){
                    pos.ypos -= 1;
                    locate(pos.xpos,pos.ypos);
                    printf("#");
@@ -490,8 +483,7 @@ int draw_snakesladders()
             }
          }
         /*For snakes*/
-        else
-        {
+        else{
             SetConsoleTextAttribute(hConsole,FOREGROUND_INTENSITY | FOREGROUND_RED);
             /*Moves cursor to specific position to draw snakes*/
             locate(pos.xpos,pos.ypos);
@@ -499,10 +491,8 @@ int draw_snakesladders()
             pos.xpos += 2;
 
             /*To decide length of snake*/
-            if(pos.xpos %2 == 0)
-            {
-              for(int i=0;i<5;i++)
-               {
+            if(pos.xpos %2 == 0){
+              for(int i=0;i<5;i++){
 
                 pos.ypos += 1;
                 locate(pos.xpos,pos.ypos);
@@ -511,11 +501,8 @@ int draw_snakesladders()
                 pos.ypos += 1;
                 locate(pos.xpos,pos.ypos);
                 printf("t");
-            }
-            else
-            {
-                for(int i=0;i<9;i++)
-                {
+            }else{
+                for(int i=0;i<9;i++){
                     pos.ypos += 1;
                     locate(pos.xpos,pos.ypos);
                     printf("*");
