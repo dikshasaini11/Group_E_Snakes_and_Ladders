@@ -18,7 +18,6 @@ contains all header files and functions required for the project
 #include <Windows.h>
 #include <string.h>
 #include <stdio.h>
-#include <termios.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <Mmsystem.h>
