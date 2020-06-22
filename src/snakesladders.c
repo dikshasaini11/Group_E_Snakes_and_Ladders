@@ -31,6 +31,7 @@ contains all header files and functions required for the project
 * to run the program by choosing choices from menu options
 * names and their keyboard ASCII values are given
 */
+
 /* Macros Definition for keyboard use */
 #define SPACE 32
 #define ENTER 13
@@ -78,6 +79,17 @@ typedef struct{
 */
 int locate(int x,int y);
 
+/** Function to display the first screen of the game 
+*Takes location in form of x,y coordinates 
+*prints the name at given position.
+*/	
+void display_fstscr();
+
+/** function to draw a layout for game which is a grid of 10x10*/
+void draw_layout();
+
+/** function to draw snakes and ladders on the board */
+int draw_snakesladders();
 
 /**
 * /brief variable declaration before main function begins
@@ -102,19 +114,13 @@ int startup=46;
 
 int main()
 {
-	/*GetStdHandle() is used for standard output on console window which is used to color text on the screen*/
-	HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(hConsole, 206); 
-
     /* Variables are declared to take input from the user*/	
     int option;   
     char choice;  
-    
-	SetConsoleTextAttribute(hConsole, 206); 
-	
+  
     if (startup==46){
         /*First screen function is called and the screen automatically moves to main menu screen*/
-        //display_fstscr();  works when display_fstscr() is included
+        display_fstscr();  
         startup=0;
 		sleep(4);
     }
@@ -221,15 +227,43 @@ int main()
 */
 int locate(int x,int y)
 {
-	HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(hConsole, 14);
+    HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     COORD coord={0,0};
     coord.X=x;
     coord.Y=y;
     SetConsoleCursorPosition(hConsole,coord);
 }
 
+/**
+*display_fstscr() displays the very first screen of the project
+*GetStdHandle() is used for standard output on console window which is used to color text on the screen
+*
+*/
+
+void display_fstscr()
+{
+	HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, 14);
+    
+	system("clear"); 
+	locate (48,17);
+	printf("*********************************************************************\n");
+        printf("\t\t\t\t\t\t                   Snakes and Ladders Game                     \n");
+	printf("\t\t\t\t\t\t*********************************************************************\n");
+            locate(30,30);      
+			printf("\t\t\t\t\t\tLOADING.......\n");
+            locate (105,35);
+			printf ("Programmed By (Group E)\n");
+         
+}
+
+
+/** 
+* Draws layout of the game board with yellow colour.
+* GetStdHandle() is used for standard output on console window which is used to color the grid of layout. 
+*/
 void draw_layout() {
+	system("clear");
 	HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hConsole, 14); //  Sets yellow color for layout
 
@@ -403,5 +437,99 @@ void draw_layout() {
 				"\xCA\xCD\xCD\xCD\xCD"	"\xCA\xCD\xCD\xCD\xCD"	"\xCA\xCD\xCD\xCD\xCD"
 				"\xCA\xCD\xCD\xCD\xCD"	"\xBC");
         putchar('\n');
+	draw_snakesladders();
 
 	}
+
+/**Draws snakes and ladders on the grid of 10x10.
+*Snakes are displayed in red colour, ladders are displayed in green colour.
+*GetStdHandle() is used for standard output on console window which is used to color snakes and ladders.
+*Positions of snakes and ladders are read from file 'snakesladders.dat' and stored in structure 'position_t'.*/
+int draw_snakesladders()
+{
+    HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    position_t pos;
+
+    /*Opening dat file to read data*/
+    FILE *file;
+    file=fopen("snakesladders.dat","r");
+
+   /* Loop to check end of file.It reads integer values from first four columns.*/
+   while (EOF != fscanf(file,"%d%d%d%d",&pos.startpt,&pos.endpt,&pos.xpos,&pos.ypos))
+   {
+        /*Decides whether it is a starting point of snake or ladder*/
+        //For ladder
+        if(pos.startpt<pos.endpt)
+        {
+            SetConsoleTextAttribute(hConsole,FOREGROUND_INTENSITY | FOREGROUND_GREEN);
+
+            /*Moves cursor to specific position to draw ladder.*/
+            locate(pos.xpos,pos.ypos);
+            printf("<##");
+            pos.xpos += 2;
+
+            /*To decide height of ladder*/
+            if(pos.xpos % 2 == 0)
+            {
+                for(int i=0;i<6;i++)
+                {
+                   pos.ypos -= 1;
+                   locate(pos.xpos,pos.ypos);
+                   printf("#");
+                }
+            }
+            else
+            {
+                for(int i=0;i<8;i++)
+                {
+                   pos.ypos -= 1;
+                   locate(pos.xpos,pos.ypos);
+                   printf("#");
+                }
+
+            }
+         }
+        /*For snakes*/
+        else
+        {
+            SetConsoleTextAttribute(hConsole,FOREGROUND_INTENSITY | FOREGROUND_RED);
+            /*Moves cursor to specific position to draw snakes*/
+            locate(pos.xpos,pos.ypos);
+            printf("<**");
+            pos.xpos += 2;
+
+            /*To decide length of snake*/
+            if(pos.xpos %2 == 0)
+            {
+              for(int i=0;i<5;i++)
+               {
+
+                pos.ypos += 1;
+                locate(pos.xpos,pos.ypos);
+                printf("*");
+               }
+                pos.ypos += 1;
+                locate(pos.xpos,pos.ypos);
+                printf("t");
+            }
+            else
+            {
+                for(int i=0;i<9;i++)
+                {
+                    pos.ypos += 1;
+                    locate(pos.xpos,pos.ypos);
+                    printf("*");
+                }
+                pos.ypos += 1;
+                locate(pos.xpos,pos.ypos);
+                printf("t");
+            }
+
+        }
+    }
+
+   locate(50,20);
+   SetConsoleTextAttribute(hConsole,FOREGROUND_BLUE+FOREGROUND_RED+FOREGROUND_GREEN+FOREGROUND_RED+FOREGROUND_RED);
+   return 0;
+}
+
