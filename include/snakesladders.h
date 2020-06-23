@@ -46,5 +46,14 @@ void draw_layout(void);
  *
  */
 void draw_snakesladders(void)
+  
+  
+  /** @brief Function prototypes to pick a random number between 1 and 6 and return as dice value
+  *
+  * This function is used to pick a random number between 1 and 6 and return as dice value
+  *
+  */
+
+int roll_dice()
 
 #endif
