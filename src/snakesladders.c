@@ -232,6 +232,7 @@ int main()
 int locate(int x,int y)
 {
     HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    /*(0,0) is top left corner of the screen. Coord structure is used*/
     COORD coord={0,0};
     coord.X=x;
     coord.Y=y;
