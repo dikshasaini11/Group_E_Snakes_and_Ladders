@@ -1,5 +1,5 @@
 /**
-* \file main.c
+* \file snakesladders.c
 *
 * Contains the main function from which different functions
 * are called to perform different tasks assigned 
@@ -73,30 +73,30 @@ typedef struct{
 *
 */
 
-/** function to move the cursor  to specific position.
+/** fn to move the cursor  to specific position.
 *Input parameters are x-coordinate and y-co-ordinate.
 *Places cursor at given coordinate position. 
 */
 int locate(int x,int y);
 
-/** Function to display the first screen of the game 
+/** Fn to display the first screen of the game 
 *Takes location in form of x,y coordinates 
 *prints the name at given position.
 */	
 void display_fstscr();
 
-/** function to draw a layout for game which is a grid of 10x10*/
+/** fn to draw a layout for game which is a grid of 10x10*/
 void draw_layout();
 
-/** function to draw snakes and ladders on the board */
+/** fn to draw snakes and ladders on the board */
 int draw_snakesladders();
 
-/** function to pick a random number between 1 and 6 and return as dice value*/
+/** fn to pick a random number between 1 and 6 and return as dice value*/
 
 int roll_dice();
 
 /**
- * \Brief function read positions of snakes and ladders from file ‘snakesladders.dat’
+ * \Brief fn read positions of snakes and ladders from file ‘snakesladders.dat’
  */
 
 int check_snake_ladder(int current_position);
@@ -109,6 +109,7 @@ int check_snake_ladder(int current_position);
 */
 
 players_t pdata;
+position_t p1in,p2in;
 int p1=0,p2=0;
 int startup=46;
 
@@ -172,7 +173,7 @@ int main()
 					p2=100;
 				}else {
 				p2=0;
-                p1=0;
+                                p1=0;
 				}
             //main_game(); works when main_game is included
             draw_layout(); /* calls draw_layout() to draw game board on the screen*/
@@ -211,7 +212,7 @@ int main()
 				printf ("***************************************\n");
                 locate (65,26);
                 scanf (" %c",&choice);
-				locate (0,29);
+		locate (0,29);
                 if (toupper(choice)=='Y') exit(1);
                 main();
                 system("clear");
@@ -465,7 +466,8 @@ void draw_layout() {
 /**Draws snakes and ladders on the grid of 10x10.
 *Snakes are displayed in red colour, ladders are displayed in green colour.
 *GetStdHandle() is used for standard output on console window which is used to color snakes and ladders.
-*Positions of snakes and ladders are read from file 'snakesladders.dat' and stored in structure 'position_t'.*/
+*Positions of snakes and ladders are read from file 'snakesladders.dat' and stored in structure 'position_t'.
+*/
 int draw_snakesladders()
 {
     HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -543,7 +545,7 @@ int draw_snakesladders()
 
 
 /**
- * \Brief function to pick a random number between 1 and 6 and return as dice value
+ * \Brief fn to pick a random number between 1 and 6 and return as dice value
  */
 
 int roll_dice()
@@ -557,7 +559,7 @@ int roll_dice()
 }
 
 /**
- * \Brief function read positions of snakes and ladders from file ‘snakesladders.dat’
+ * \Brief fn read positions of snakes and ladders from file ‘snakesladders.dat’
  */
 
 int check_snake_ladder(int current_position)
