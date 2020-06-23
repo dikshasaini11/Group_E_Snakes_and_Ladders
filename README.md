@@ -54,6 +54,10 @@ To run, you must first install it. Further, you can follow instructions mentione
 Detailed instructions for user is found in *usermanuallink*. 
 Detailed instructions for developer is found in *developermanuallink*.
 
+
+# License 
+This project is licensed under the GPL 2.0 License - see the LICENSE.md file for details
+
 # Acknowledgement
 
 Thanks to Dr. Cristina Ruiz Martin for providing guidance on how to develop the software.
