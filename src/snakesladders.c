@@ -235,14 +235,24 @@ int main()
 * @param[in] x, y Coordinates from user 
 * @param[out] coord output at the specific position on the screen
 */
-int locate(int x,int y)
-{
-    HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    /*(0,0) is top left corner of the screen. Coord structure is used*/
-    COORD coord={0,0};
+int locate(int x,int y){
+
+    COORD coord;
     coord.X=x;
     coord.Y=y;
-    SetConsoleCursorPosition(hConsole,coord);
+
+
+    HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleCursorPosition( hConsole, coord);
+
+
+    if (! SetConsoleCursorPosition(hConsole, coord)){
+          //printf("Function failed (%d)\n", GetLastError());
+          return 0;
+
+     }else{
+    	 return 1;
+     }
 }
 
 /**
