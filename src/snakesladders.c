@@ -520,35 +520,6 @@ int draw_snakesladders()
    return 0;
 }
 
-int check_snake_ladder(int current_position)
-{
-	position_t pos;
-
-	/*Opening dat file to read data*/
-	FILE *file;
-	file=fopen("snakesladders.dat","r");
-
-   /* Loop to check end of file.It reads integer values from first four columns.*/
-   while (EOF != fscanf(file,"%d%d%d%d",&pos.startpt,&pos.endpt,&pos.xpos,&pos.ypos)){
-	   //printf ("the initial and final positions are %d,%d\n.",pos.startpt,pos.endpt);
-	   if (current_position==pos.startpt){
-		   if (pos.startpt<pos.endpt){
-			   printf ("Woohoo! You have settled on a ladder\n");
-			   current_position=pos.endpt;
-
-		   }else if (pos.startpt>pos.endpt){
-			   printf ("Sorry you have hit a snake\n");
-			   current_position=pos.endpt;
-		   }else{
-
-		   }
-
-	   }
-   }
-   return (current_position);
-
-
-}
 
 
 
