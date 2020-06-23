@@ -91,9 +91,7 @@ void draw_layout();
 /** function to draw snakes and ladders on the board */
 int draw_snakesladders();
 
-/**
- * \Brief function to pick a random number between 1 and 6 and return as dice value
- */
+/** function to pick a random number between 1 and 6 and return as dice value*/
 
 int roll_dice()
 
