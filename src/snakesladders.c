@@ -550,5 +550,20 @@ int check_snake_ladder(int current_position)
 
 }
 
+/**
+ * \Brief function to pick a random number between 1 and 6 and return as dice value
+ */
+
+
+int roll_dice()
+{
+    int dice_value;
+    /* set seed value according to computer's internal clock */
+    srand(time(NULL));
+    /* rand() function generates value between 0 and 5*/
+    dice_value=(rand()%6)+1;
+    return dice_value;
+
+}
 
 
