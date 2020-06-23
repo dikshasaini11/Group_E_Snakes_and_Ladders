@@ -520,3 +520,108 @@ int draw_snakesladders()
    return 0;
 }
 
+/**
+ * \Brief: This function decides if player should move, increments players turn and outputs player's new position
+ *
+ */
+int main_game()
+{
+	/*initialise console screen to print text*/
+
+	HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+
+
+
+	draw_layout();
+	//getchar();
+	//position();
+
+	while (p1!=10&&p2!=10){
+	    //for (int i=0;i<2;i++)//this cause turns to go from 1 to 9 and repeat 1 to 9, and repeat infinitely
+	    //{
+	    turn++;
+
+	    /*dice function will return value of dice*/
+		int dice_value=dice();
+
+
+		/*if turn no is even, this is used to indicate that it is player one's turn*/
+		if (turn%2==0){
+			//locate(45,45);
+			printf ("\nPlayer 1, it is your turn. Press enter to roll the dice.\n");
+			getchar();
+			printf("Player1, The value of your dice is %d\n", dice_value);
+			if ((p1+dice_value)>100){
+				printf("Player 1, you have exceeded the value of 100. Please wait for your turn and try again");
+			}if (p1==0){
+				if (dice_value==1 || dice_value==6){
+					locate(45,45);
+					printf ("Player 1,you may now start playing the game in your next turn.");
+					p1=1;
+				}
+			}
+			else{
+				/*loop to increment value of p1 according to dice value*/
+				for (int j=1;j<=dice_value;j++){
+					p1=p1+1;
+					/*position locates new position of player on screen*/
+					//position();
+
+
+
+				}
+				p1=check_snake_ladder(p1);
+				printf("After this turn, your new position  is %d.\n",p1);
+
+			}
+
+
+		}else {
+
+			printf ("Player 2, it is your turn. Press enter to continue.\n");
+			getchar();
+			printf("The value of your dice is %d\n", dice_value);
+			if ((p2+dice_value)>100){
+				  printf("Player 2, you have exceeded the value of 100. Please wait for your turn and try again");
+			}
+
+
+			if (p2==0){
+				if (dice_value==1 || dice_value==6){
+					locate(45,45);
+					printf ("Player 2, you may now start playing the game in your next turn.");
+					p2=1;
+				}
+			}
+			else{
+				for (int j=1;j<=dice_value;j++){
+					p2=p2+1;
+
+					//position();
+
+				}
+				p2=check_snake_ladder(p2);
+				printf("After this turn, your new position  is %d\n",p2);
+				Sleep(100);
+			 }
+
+		}
+
+	}
+	if (p1==10){
+
+		printf("Player 1, you are the winner!");
+
+	}else if(p2==10){
+
+		printf("Player 2, you are the winner!");
+	}
+
+
+	getchar();
+	return 0;
+
+}
+
+
