@@ -520,6 +520,9 @@ int draw_snakesladders()
    return 0;
 }
 
+/**
+
+
 int check_snake_ladder(int current_position)
 {
 	position_t pos;
