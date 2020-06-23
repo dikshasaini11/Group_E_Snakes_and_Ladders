@@ -30,30 +30,40 @@ void display_fstscr(void);
 
 
 /**  @brief Function prototypes to draw a game board
- *
- * This function is used to draw a 10x10 grid as a game board
- *
- *
- */
+*
+* This function is used to draw a 10x10 grid as a game board
+*
+*
+*/
 
 void draw_layout(void);
 
 
 /**  @brief Function prototypes to draw snakes and ladders on the board
- *
- * This function is used to draw snakes and ladders on the board
- *
- *
- */
+*
+* This function is used to draw snakes and ladders on the board
+*
+*
+*/
 void draw_snakesladders(void)
   
   
-  /** @brief Function prototypes to pick a random number between 1 and 6 and return as dice value
-  *
-  * This function is used to pick a random number between 1 and 6 and return as dice value
-  *
-  */
+ /** @brief Function prototypes to pick a random number between 1 and 6 and return as dice value
+ *
+ * This Function is used to pick a random number between 1 and 6 and return as dice value
+ *
+ *
+ */
 
 int roll_dice()
+  
+ /** @brief Function read positions of snakes and ladders from file ‘snakesladders.dat’
+ *
+ * This Function is used to read positions of snakes and ladders from file ‘snakesladders.dat’
+ *
+ *
+ */
+
+int check_snake_ladder(int current_position)
 
 #endif
