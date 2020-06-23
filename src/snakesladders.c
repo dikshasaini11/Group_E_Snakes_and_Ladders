@@ -92,6 +92,11 @@ void draw_layout();
 int draw_snakesladders();
 
 /**
+ * \Brief function to pick a random number between 1 and 6 and return as dice value
+ */
+int roll_dice()
+
+/**
 * /brief variable declaration before main function begins
 *
 * @param[in] players pdata This is the variable of structure players_t
