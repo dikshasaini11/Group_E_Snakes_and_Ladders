@@ -92,6 +92,12 @@ void draw_layout();
 int draw_snakesladders();
 
 /**
+ * \Brief function reads positions of snakes and ladders from file ‘snakesladders.dat’
+ */
+
+int check_snakesladders()
+
+/**
 * /brief variable declaration before main function begins
 *
 * @param[in] players pdata This is the variable of structure players_t
@@ -535,9 +541,11 @@ int roll_dice()
     return dice_value;
 }
 
+/**
+ * \Brief function reads positions of snakes and ladders from file ‘snakesladders.dat’
+ */
 
-
-int check_snake_ladder(int current_position)
+int check_snakesladders()
 {
 	position_t pos;
 
