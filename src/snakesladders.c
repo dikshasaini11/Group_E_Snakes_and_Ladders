@@ -291,7 +291,7 @@ int main_game()
 	    /*if turn no is even, this is used to indicate that it is player one's turn*/
 		if (turn%2==0){
 
-			printf ("\nPlayer 1, it is your turn. Press enter to roll the dice.\n");
+			printf ("\nPlayer 1, it is your turn. Press enter to roll the dice or 'q' to quit.\n");
 			userch = getchar();
 			if(userch == 'q' || userch == 'Q')
             {
@@ -336,7 +336,7 @@ int main_game()
 			}else {
 			/*repeated for player 2*/
 
-			printf ("Player 2, it is your turn. Press enter to continue.\n");
+			printf ("Player 2, it is your turn. Press enter to roll the dice or 'q' to quit.\n");
 			userch = getchar();
 			if(userch == 'q' || userch == 'Q')
             {
@@ -699,7 +699,7 @@ int draw_snakesladders()
         }
     }
 
-   locate(50,20);
+   locate(0,20);
    SetConsoleTextAttribute(hConsole,FOREGROUND_BLUE+FOREGROUND_RED+FOREGROUND_GREEN+FOREGROUND_RED+FOREGROUND_RED);
    return 0;
 }
@@ -761,8 +761,8 @@ int check_snake_ladder(int current_position)
 void loadgame()
 {
     FILE *p;
-    int flag=0,temp[3];
-    char pw[11];
+    int flag=0;
+    char pw[11],name[11];
     int filesize = 0;
 
     //Reads data from players.dat file
@@ -839,7 +839,7 @@ void save_game()
             fwrite(&pdata,sizeof(players_t),1,p);
 
             flag=1;
-        }els{
+        }else{
             printf ("Password Mismatched !!!! Please Re-enter the data\n");
         }
     }
