@@ -109,7 +109,7 @@ int roll_dice();
 
 int check_snake_ladder(int current_position);
 
-/** /Brief Function to load any previously saved game’
+/** /Brief Function to load any previously saved game
 * It takes gamename and password as user input
 * Reads data from 'players.dat' file
 * Loads game according to data read from file.
@@ -117,12 +117,27 @@ int check_snake_ladder(int current_position);
 
 void loadgame();
 
+/** /Brief Function to get password from user’
+* It takes memory pointer as input
+* Gives password as output.
+*/
+
+int get_password(char *memory);
+
+/** /Brief Function to save the game’
+* It takes user input for game name and password
+* Saves data in file 'players.dat'.
+*/
+
+void save_game();
+
 /**
 * /brief variable declaration before main function begins
 *
 * @param[in] players pdata This is the variable of structure players_t
 * @param[in] startup declaring and initialising startup value.. 
 */
+
 
 players_t pdata;
 position_t p1in,p2in;
