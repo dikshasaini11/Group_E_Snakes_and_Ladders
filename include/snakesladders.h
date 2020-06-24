@@ -46,17 +46,15 @@ void draw_layout(void);
 *
 *
 */
-void draw_snakesladders(void)
+ void draw_snakesladders(void)
   
   
  /** @brief Function prototypes to pick a random number between 1 and 6 and return as dice value
  *
  * This Function is used to pick a random number between 1 and 6 and return as dice value
- *
- *
  */
-
-int roll_dice()
+ 
+  int roll_dice()
   
  /** @brief Function read positions of snakes and ladders from file ‘snakesladders.dat’
  *
@@ -69,15 +67,16 @@ int check_snake_ladder(int current_position)
 
 
 
-  
-  
- void loadgame();
+/** @brief Function to get password from user’
+*
+* It takes memory pointer as input andGives password as output.
+*/
+void loadgame();
 
 
 
-/** /Brief Function to get password from user’
-* It takes memory pointer as input
-* Gives password as output.
+/** @brief Function to get password from user’
+* It takes memory pointer as input and Gives password as output.
 */
 
 
@@ -85,18 +84,14 @@ int get_password(char *memory);
 
 
 
-/** /Brief Function to save the game’
+/** @brief Function to save the game’
 * It takes user input for game name and password
 * Saves data in file 'players.dat'.
 */
-
-
 void save_game();
 
-
-
 /**
-* /brief function defined for functions to be used with cygwin terminal*/
+* @brief function defined for functions to be used with cygwin terminal*/
 int getch();
 
 #endif
