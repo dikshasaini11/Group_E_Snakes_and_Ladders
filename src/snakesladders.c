@@ -138,6 +138,10 @@ void save_game();
 * @param[in] startup declaring and initialising startup value.. 
 */
 
+/**
+* /brief function defined for functions to be used with cygwin terminal*/
+int getch();
+
 
 players_t pdata;
 position_t p1in,p2in;
@@ -793,6 +797,19 @@ void loadgame()
     }
 
 }
+
+int getch() {
+    struct termios oldt, newt;
+    int ch;
+    tcgetattr(STDIN_FILENO, &oldt);
+    newt = oldt;
+    newt.c_lflag &= ~(ICANON | ECHO);
+    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+    ch = getchar();
+    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+    return ch;
+}
+
 
 
 
