@@ -1,0 +1,66 @@
+***********************************TEST 1A*******************************
+We are going to test locate function with positive coordinate values 
+Expected result is it should locate cursor at specific location
+ 
+
+PASSED
+
+
+***********************************TEST 1B*******************************
+We are going to test locate function with negative coordinate values 
+Expected result is it should give error
+ 
+
+FAILED
+
+
+***********************************TEST 1B*******************************
+We are going to test locate function with coordinate values (0,0) 
+Expected result is it should place cursor at left upper corner
+ 
+
+PASSED
+
+
+***********************************TEST 2A*******************************
+We are going to test if player is at ladder when 'snakesladders.dat' file is present
+Expected result is player should go to top of ladder that is current position should increment
+
+PASSED
+
+
+***********************************TEST 2B*******************************
+We are going to test if player is at snake,when 'snakesladders.dat' file is present
+Expected result is current position should decreament
+ 
+
+PASSED
+
+
+***********************************TEST 3A*******************************
+We are going to test draw_snakesladders function when 'snakesladders.dat' file is present
+Expected result is, it should draw snakes,ladders
+ 
+
+PASSED
+
+
+***********************************TEST 3B*******************************
+We are going to test draw_snakesladders function when 'snakesladders.dat' file is not present
+Expected result is it should return 'file does not exist' since we are passing different file name
+ 
+
+FAILED
+
+
+***********************************TEST 4A*******************************
+We are going to test load game function when given gamename and password matches with present in the file
+Expected result is 'Authentication successful
+ 
+
+FAILED
+
+
+**********************************************************************
+Only these many testcases we have generated due to user input incursionExpected result is 'Authentication successful
+ 
