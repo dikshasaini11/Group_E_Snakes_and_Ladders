@@ -708,4 +708,76 @@ int check_snake_ladder(int current_position)
 
 }
 
+/**
+ * \Brief loads previously saved game using gamename and password.
+ */
+
+void loadgame()
+{
+    FILE *p;
+    int flag=0,temp[3];
+    char pw[11];
+    int filesize = 0;
+
+    //Reads data from players.dat file
+    p=fopen("players.dat","r");
+    
+    //Check if file doesn't exist
+    if(p == NULL)
+    {
+        printf("File does not exist. You will be redirected soon.");
+        sleep(3);
+    }
+
+    else
+    {
+        fseek(p, 0, SEEK_END);
+        filesize = ftell(p);
+        fclose(p);
+    if(filesize != 0)
+    {
+
+    p=fopen("players.dat","r");
+
+    for (;flag!=1 && p!=NULL;)
+    {
+	// verify gamename and password after entering
+        printf ("\nEnter the authentication name of the game  ");
+        scanf (" %[^\n]",name);
+        printf ("Enter the password ");
+		scanf("%c",pw);
+        get_password(pw);
+        while (!(feof(p)))
+        {
+            fscanf (p,"%d %d %d",&p1,&p2,&turn);
+            fread(&pdata,sizeof(players_t),1,p);
+
+            if ((strcmp(pdata.gamename,name))==0 && (strcmp(pdata.password,pw))==0)
+            {
+                printf ("\n**Authentication and Password Matched**\n press any key to load the game......");
+                getchar();
+
+                fclose(p);
+                main_game();
+                flag=1;
+            }
+            else continue;
+
+        }
+                printf ("Invalid Authentication name or Password!!!! Please Re-enter the data");
+                getchar();
+                main();
+
+    }
+
+    }
+    else{
+        printf("File is empty. You will be redirected soon");
+        sleep(3);
+    }
+    }
+
+}
+
+
 
