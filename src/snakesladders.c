@@ -295,6 +295,7 @@ int main_game()
 				}
 				/*checks position to see if it lands on snakes or ladders*/
 				p1=check_snake_ladder(p1);
+				/*here printf is displaying dicedata according to display_dicedata function*/
 				printf("After this turn, your new position  is %d.\n",p1);
 
 				}
