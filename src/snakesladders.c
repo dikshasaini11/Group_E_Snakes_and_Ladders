@@ -175,18 +175,18 @@ int main()
 	
 	/*Expected User input to proceed further in the game*/
    do{
-	    locate (24,24);
-	    printf("        Game Starting!!!    \n");
-	    printf("------------------------------------------\n\n");
-
-	    printf("Main Menu\n");
-	    printf("1. Press 1 to start a NEW GAME.\n");
-	    printf("2. Press 2 to RESUME.\n");
-	    printf("3. Press 3 to LOAD GAME.\n");
-	    printf("4. Press 4 to EXIT.\n");
-
-	    printf(" Please enter an option from the main menu: ");
-	    scanf("%d",&option);
+	locate (24,24);
+	printf("        Game Starting!!!    \n");
+  printf("------------------------------------------\n\n");
+	
+    printf("Main Menu\n");
+    printf("1. Press 1 to start a NEW GAME.\n");
+    printf("2. Press 2 to RESUME.\n");
+    printf("3. Press 3 to LOAD GAME.\n");
+    printf("4. Press 4 to EXIT.\n");
+    
+    printf(" Please enter an option from the main menu: ");
+    scanf("%d",&option);
 	
 	system("clear");
 	/* switch case 'option' to operate menu options*/
@@ -195,7 +195,7 @@ int main()
             system("clear");                 
             locate (20,25);
             printf ("This will Start a New Game Continue?(y/n)?? ");
-	    scanf (" %c",&choice);
+			scanf (" %c",&choice);
             
             if (choice=='y' || choice=='Y'){
                 startup=1;
@@ -208,13 +208,12 @@ int main()
 				}else {
 				p2=0;
                                 p1=0;
-			        turn = 1;
 				}
-             main_game();
+            main_game();
             
             }else {
 		     getchar();
-			 main();
+		     main();
 			}
 		}
 		case 2: {      /*Resume Function*/
@@ -255,9 +254,9 @@ int main()
         default:{/*Any key pressed other than the 1-4 will give this error*/
 		        locate(24,24);
 		        printf("Oops! An invalid choice slipped through.\n ");
-				locate(24,25);
-                printf("Please try again.\n");
-				exit(0);
+			locate(24,25);
+                        printf("Please try again.\n");
+		        exit(0);
             break;
 		}
     }
@@ -275,10 +274,12 @@ int main()
 int main_game()
 {
 	/*initialise console screen to print text*/
-        char userch,savech;
+
 	HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	system("clear");
 	/* draw layout */
 	draw_layout();
+	getchar();
 
 	/*p1 is position of player 1. */
 	while (p1!=100&&p2!=100){
@@ -293,32 +294,16 @@ int main_game()
 		if (turn%2==0){
 
 			printf ("\nPlayer 1, it is your turn. Press enter to roll the dice.\n");
-			userch = getchar();
-			if(userch == 'q' || userch == 'Q')
-            {
-
-                printf ("Do you want to save the game?(y/n)?? ");
-			    scanf (" %c",&savech);
-                if(savech == 'y'||savech == 'Y')
-                {
-                save_game();
-                exit(0);
-                }
-                else
-                {
-                    exit(0);
-                }
-            }
-			else
-			{
+			getchar();
 			/*using value obtained from dice roll function */
 			printf("Player1, The value of your dice is %d\n", dice_value);
 			/* player cannot exceed 100*/
 			if ((p1+dice_value)>100){
-				printf("Player 1, you have exceeded the value of 100. Please wait for your turn and try again\n");
+			printf("Player 1, you have exceeded the value of 100. Please wait for your turn and try again\n");
 			}else if (p1==0){
 				/* player can only start playing if the obtain 1 or 6*/
 				if (dice_value==1 || dice_value==6){
+					locate(45,45);
 					printf ("Player 1,you may now start playing the game in your next turn.");
 					p1=1;
 				}
@@ -337,28 +322,13 @@ int main_game()
 			/*repeated for player 2*/
 
 			printf ("Player 2, it is your turn. Press enter to continue.\n");
-			userch = getchar();
-			if(userch == 'q' || userch == 'Q')
-            {
-                printf ("Do you want to save the game?(y/n)?? ");
-			    scanf (" %c",&savech);
-                if(savech == 'y'||savech == 'Y')
-                {
-                save_game();
-                exit(0);
-                }
-                else
-                {
-                    exit(0);
-                }
-            }
-				else
-				{
+			getchar();
 			printf("The value of your dice is %d\n", dice_value);
 			if ((p2+dice_value)>100){
-				  printf("Player 2, you have exceeded the value of 100. Please wait for your turn and try again");
+			printf("Player 2, you have exceeded the value of 100. Please wait for your turn and try again");
 			}else if (p2==0){
 				if (dice_value==1 || dice_value==6){
+					locate(45,45);
 					printf ("Player 2, you may now start playing the game in your next turn.");
 					p2=1;
 				}
@@ -366,17 +336,13 @@ int main_game()
 			else{
 				for (int j=1;j<=dice_value;j++){
 					p2=p2+1;
-
-
-
-				}
+                             }
 				p2=check_snake_ladder(p2);
 				printf("After this turn, your new position  is %d. \n",p2);
 
 			 }
 
 		}
-			}
 
 	}
 	/*winning condition*/
@@ -437,9 +403,9 @@ void display_fstscr()
         printf("\t\t\t\t\t\t                   Snakes and Ladders Game                     \n");
 	printf("\t\t\t\t\t\t*********************************************************************\n");
             locate(30,30);      
-			printf("\t\t\t\t\t\tLOADING.......\n");
+	    printf("\t\t\t\t\t\tLOADING.......\n");
             locate (105,35);
-			printf ("Programmed By (Group E)\n");
+	    printf ("Programmed By (Group E)\n");
          
 }
 
@@ -772,29 +738,23 @@ void loadgame()
     p=fopen("players.dat","r");
     
     //Check if file doesn't exist
-    if(p == NULL)
-    {
+    if(p == NULL){
         printf("File does not exist. You will be redirected soon.");
         sleep(3);
-    }
-
-    else
+    }else
     {
         fseek(p, 0, SEEK_END);
         filesize = ftell(p);
         fclose(p);
-    if(filesize != 0)
-    {
-
-    p=fopen("players.dat","r");
-
-    for (;flag!=1 && p!=NULL;)
+        if(filesize != 0){
+        p=fopen("players.dat","r");
+	for (;flag!=1 && p!=NULL;)
     {
 	// verify gamename and password after entering
         printf ("\nEnter the authentication name of the game  ");
         scanf (" %[^\n]",name);
         printf ("Enter the password ");
-		scanf("%c",pw);
+	scanf("%c",pw);
         get_password(pw);
         while (!(feof(p)))
         {
@@ -802,29 +762,25 @@ void loadgame()
             fread(&pdata,sizeof(players_t),1,p);
 
             if ((strcmp(pdata.gamename,name))==0 && (strcmp(pdata.password,pw))==0)
-            {
+	    {
                 printf ("\n**Authentication and Password Matched**\n press any key to load the game......");
                 getchar();
 
                 fclose(p);
                 main_game();
                 flag=1;
-            }
-            else continue;
-
-        }
+            }else continue;
+          }
                 printf ("Invalid Authentication name or Password!!!! Please Re-enter the data");
                 getchar();
                 main();
+       }
 
+    } else{
+         printf("File is empty. You will be redirected soon");
+         sleep(3);
     }
-
-    }
-    else{
-        printf("File is empty. You will be redirected soon");
-        sleep(3);
-    }
-    }
+  }
 
 }
 /**
@@ -846,24 +802,20 @@ void save_game()
         get_password(pw1);
         printf ("\nRe-enter the Password ");
         get_password(pdata.password);
-        if (strcmp(pw1,pdata.password)==0)
-        {
+        if (strcmp(pw1,pdata.password)==0){
             printf ("\n**Password Matched**\n Game Saved......");
             fprintf (p,"%d %d %d",p1,p2,turn);
             fwrite(&pdata,sizeof(players_t),1,p);
 
             flag=1;
-        }
-        else
-        {
+        }els{
             printf ("Password Mismatched !!!! Please Re-enter the data\n");
         }
-
     }
     fclose(p);
 }
 
-/** /Brief Function to save the game’
+/** /Brief Fn to save the game’
 * It takes user input for game name and password
 * Saves data in file 'players.dat'.
 */
@@ -872,23 +824,23 @@ int get_password(char *memory)
 {
     int i=0;
 	int flag=0;
-    char p[11]="";
+        char p[11]="";
 	int upper=0, lower=0, digit=0;
-
+      /*To call the function again on invalid entry*/ 
 	label:
 	i=0;
 	upper=0, lower=0, digit=0;
 
-    do
-	{
+    do 
+       {
         p[i]=getch();
 	/*masking password value*/
         if (isprint(p[i])){
          printf ("*",p[i]);
             i++;
-        }else if (p[i]==13) {
-			break;
-	}else if (p[i]==8){
+        } else if (p[i]==13) {
+		break;
+	} else if (p[i]==8){
             if (i==0) continue;
             printf ("\b \b");
             i=i-1;
@@ -909,12 +861,12 @@ int get_password(char *memory)
 
 	if (lower >=1 && upper >=1 && digit >=1 && strlen(p) >=6 && strlen(p) <=11){
         //printf("Upper: %d, lower:%d, digit:%d\n",upper,lower,digit);
-		printf(" \n Valid Password\n");
+	printf(" \n Valid Password\n");
     }
     else{
         printf("\n Invalid Entry.\n");
-		printf("Enter password again:");
-		goto label;
+	printf("Enter password again:");
+	goto label;
 	}
 	strcpy (memory,p);
 	return 1;
