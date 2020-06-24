@@ -46,7 +46,7 @@ void draw_layout(void);
 *
 *
 */
- void draw_snakesladders(void)
+ void draw_snakesladders(void);
   
   
  /** @brief Function prototypes to pick a random number between 1 and 6 and return as dice value
@@ -54,7 +54,7 @@ void draw_layout(void);
  * This Function is used to pick a random number between 1 and 6 and return as dice value
  */
  
-  int roll_dice()
+  int roll_dice();
   
  /** @brief Function read positions of snakes and ladders from file ‘snakesladders.dat’
  *
@@ -63,7 +63,7 @@ void draw_layout(void);
  *
  */
 
-int check_snake_ladder(int current_position)
+int check_snake_ladder(int current_position);
 
 
 
@@ -71,6 +71,7 @@ int check_snake_ladder(int current_position)
 *
 * It takes memory pointer as input andGives password as output.
 */
+
 void loadgame();
 
 
