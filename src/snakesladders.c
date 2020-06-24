@@ -797,6 +797,97 @@ void loadgame()
     }
 
 }
+/**
+* /brief variable declaration before main function begins
+*/
+void save_game()
+{
+
+    FILE *p;
+    int flag=0;
+    char pw1[11];
+    p=fopen("players.dat","a+");
+    for (;flag!=1;)
+    {
+        printf ("Enter the authentication name for the game  ");
+        scanf (" %[^\n]",pdata.gamename);
+        printf ("\nEnter the password not less Than 6 characters ");
+		scanf("%c",pw1);
+        get_password(pw1);
+        printf ("\nRe-enter the Password ");
+        get_password(pdata.password);
+        if (strcmp(pw1,pdata.password)==0)
+        {
+            printf ("\n**Password Matched**\n Game Saved......");
+            fprintf (p,"%d %d %d",p1,p2,turn);
+            fwrite(&pdata,sizeof(players_t),1,p);
+
+            flag=1;
+        }
+        else
+        {
+            printf ("Password Mismatched !!!! Please Re-enter the data\n");
+        }
+
+    }
+    fclose(p);
+}
+
+/** /Brief Function to save the game’
+* It takes user input for game name and password
+* Saves data in file 'players.dat'.
+*/
+
+int get_password(char *memory)
+{
+    int i=0;
+	int flag=0;
+    char p[11]="";
+	int upper=0, lower=0, digit=0;
+
+	label:
+	i=0;
+	upper=0, lower=0, digit=0;
+
+    do
+	{
+        p[i]=getch();
+        if (isprint(p[i])){
+         printf ("*",p[i]);
+            i++;
+        }else if (p[i]==13) {
+			break;
+	}else if (p[i]==8){
+            if (i==0) continue;
+            printf ("\b \b");
+            i=i-1;
+        }
+    }while (p[i]!='\n');
+    p[i] = '\0';
+
+    for (i=0;i<=strlen(p);i++)
+    {
+        if (p[i]>=65 && p[i]<=90){
+            upper++;
+        }else if(p[i]>=97 && p[i] <=122){
+            lower++;
+        }else if(p[i]>=48 && p[i] <=57){
+            digit++;
+        }
+    }
+
+	if (lower >=1 && upper >=1 && digit >=1 && strlen(p) >=6 && strlen(p) <=11){
+        //printf("Upper: %d, lower:%d, digit:%d\n",upper,lower,digit);
+		printf(" \n Valid Password\n");
+    }
+    else{
+        printf("\n Invalid Entry.\n");
+		printf("Enter password again:");
+		goto label;
+	}
+	strcpy (memory,p);
+	return 1;
+}
 
 int getch() {
     struct termios oldt, newt;
@@ -809,6 +900,8 @@ int getch() {
     tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
     return ch;
 }
+
+
 
 
 
