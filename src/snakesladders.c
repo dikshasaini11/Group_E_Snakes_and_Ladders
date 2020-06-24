@@ -109,6 +109,14 @@ int roll_dice();
 
 int check_snake_ladder(int current_position);
 
+/** /Brief Function to load any previously saved game’
+* It takes gamename and password as user input
+* Reads data from 'players.dat' file
+* Loads game according to data read from file.
+*/
+
+void loadgame();
+
 /**
 * /brief variable declaration before main function begins
 *
