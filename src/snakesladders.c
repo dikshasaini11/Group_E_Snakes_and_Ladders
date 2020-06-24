@@ -569,7 +569,9 @@ int check_snake_ladder(int current_position)
 	/*Opening dat file to read data*/
 	FILE *file;
 	file=fopen("snakesladders.dat","r");
-
+	if (file==NULL){
+		return 0;
+	}
    /* Loop to check end of file.It reads integer values from first four columns.*/
    while (EOF != fscanf(file,"%d%d%d%d",&pos.startpt,&pos.endpt,&pos.xpos,&pos.ypos)){
 	   //printf ("the initial and final positions are %d,%d\n.",pos.startpt,pos.endpt);
