@@ -1,0 +1,236 @@
+\hypertarget{snakesladders_8c}{}\doxysection{C\+:/\+Users/sayal/\+Documents/\+C/\+Snakes\+\_\+\+And\+\_\+\+Ladders/snakesladders.c File Reference}
+\label{snakesladders_8c}\index{C:/Users/sayal/Documents/C/Snakes\_And\_Ladders/snakesladders.c@{C:/Users/sayal/Documents/C/Snakes\_And\_Ladders/snakesladders.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$Windows.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$Mmsystem.\+h$>$}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structplayers__t}{players\+\_\+t}}
+\item 
+struct \mbox{\hyperlink{structposition__t}{position\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{snakesladders_8c_a5ff6e798033f03e74730e99f01936f84}{S\+P\+A\+CE}}~32
+\item 
+\#define \mbox{\hyperlink{snakesladders_8c_af4bced5cf8ed55746d4b5d34f9a0fe39}{E\+N\+T\+ER}}~13
+\item 
+\#define \mbox{\hyperlink{snakesladders_8c_afe4b0e625372cd38ec60150d6f5594b8}{E\+S\+C\+A\+PE}}~27
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{snakesladders_8c_a6587e4379a62f4a3d05f4a3ca5f295f8}{main\+\_\+game}} ()
+\item 
+int \mbox{\hyperlink{snakesladders_8c_a1dd4feb6757600b8f7ce6195ba7b42bf}{locate}} (int x, int y)
+\item 
+void \mbox{\hyperlink{snakesladders_8c_ad6208df8c5bdccfda1c7d52e3aac1633}{display\+\_\+fstscr}} ()
+\item 
+void \mbox{\hyperlink{snakesladders_8c_aa3909e0d52143638bad66d5ae96e88f7}{draw\+\_\+layout}} ()
+\item 
+int \mbox{\hyperlink{snakesladders_8c_a98b805f07e9f140e3a5509d56694ede5}{draw\+\_\+snakesladders}} ()
+\item 
+int \mbox{\hyperlink{snakesladders_8c_af503a31dab280d8d39e1d426a36cb7b9}{roll\+\_\+dice}} ()
+\item 
+int \mbox{\hyperlink{snakesladders_8c_afd9f1705e32c854025413da93ad051fe}{check\+\_\+snake\+\_\+ladder}} (int current\+\_\+position)
+\item 
+void \mbox{\hyperlink{snakesladders_8c_ab6b344951638a9e1f5beccd40afe4bd1}{loadgame}} ()
+\item 
+int \mbox{\hyperlink{snakesladders_8c_a036b77b9e621c0b0933133aa94027041}{get\+\_\+password}} (char $\ast$memory)
+\item 
+void \mbox{\hyperlink{snakesladders_8c_a080f5ef7e7f8a73a4e49e5ea040391c3}{save\+\_\+game}} ()
+\item 
+int \mbox{\hyperlink{snakesladders_8c_a160f6d2893bb6b89ab3ad5d863c20e3d}{getch}} ()
+\item 
+int \mbox{\hyperlink{snakesladders_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structplayers__t}{players\+\_\+t}} \mbox{\hyperlink{snakesladders_8c_a446442bf1990ba1dfc5398dd7c8328aa}{pdata}}
+\item 
+int \mbox{\hyperlink{snakesladders_8c_a8d5504470de9fec69f0389092910c500}{p1}} =0
+\item 
+int \mbox{\hyperlink{snakesladders_8c_a2fbbf5056a49832e7d5e73a15ae2ee05}{p2}} =0
+\item 
+int \mbox{\hyperlink{snakesladders_8c_aaefa47f4fdf865c2358c22b542a993e4}{turn}} =1
+\item 
+int \mbox{\hyperlink{snakesladders_8c_ab7862540fda67cb6cc6b55355ecc4e4e}{startup}} =46
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains the main function from which different functions are called to perform different tasks assigned based on the user inputs through keyboard 
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{snakesladders_8c_af4bced5cf8ed55746d4b5d34f9a0fe39}\label{snakesladders_8c_af4bced5cf8ed55746d4b5d34f9a0fe39}} 
+\index{snakesladders.c@{snakesladders.c}!ENTER@{ENTER}}
+\index{ENTER@{ENTER}!snakesladders.c@{snakesladders.c}}
+\doxysubsubsection{\texorpdfstring{ENTER}{ENTER}}
+{\footnotesize\ttfamily \#define E\+N\+T\+ER~13}
+
+\mbox{\Hypertarget{snakesladders_8c_afe4b0e625372cd38ec60150d6f5594b8}\label{snakesladders_8c_afe4b0e625372cd38ec60150d6f5594b8}} 
+\index{snakesladders.c@{snakesladders.c}!ESCAPE@{ESCAPE}}
+\index{ESCAPE@{ESCAPE}!snakesladders.c@{snakesladders.c}}
+\doxysubsubsection{\texorpdfstring{ESCAPE}{ESCAPE}}
+{\footnotesize\ttfamily \#define E\+S\+C\+A\+PE~27}
+
+\mbox{\Hypertarget{snakesladders_8c_a5ff6e798033f03e74730e99f01936f84}\label{snakesladders_8c_a5ff6e798033f03e74730e99f01936f84}} 
+\index{snakesladders.c@{snakesladders.c}!SPACE@{SPACE}}
+\index{SPACE@{SPACE}!snakesladders.c@{snakesladders.c}}
+\doxysubsubsection{\texorpdfstring{SPACE}{SPACE}}
+{\footnotesize\ttfamily \#define S\+P\+A\+CE~32}
+
+contains all header files and functions required for the project Brief Macros constants defined that will help the user to use keyboard keys.
+
+to run the program by choosing choices from menu options names and their keyboard A\+S\+C\+II values are given. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{snakesladders_8c_afd9f1705e32c854025413da93ad051fe}\label{snakesladders_8c_afd9f1705e32c854025413da93ad051fe}} 
+\index{snakesladders.c@{snakesladders.c}!check\_snake\_ladder@{check\_snake\_ladder}}
+\index{check\_snake\_ladder@{check\_snake\_ladder}!snakesladders.c@{snakesladders.c}}
+\doxysubsubsection{\texorpdfstring{check\_snake\_ladder()}{check\_snake\_ladder()}}
+{\footnotesize\ttfamily int check\+\_\+snake\+\_\+ladder (\begin{DoxyParamCaption}\item[{int}]{current\+\_\+position }\end{DoxyParamCaption})}
+
+Brief Function to read positions of snakes and ladders from file ‘snakesladders.\+dat’.
+
+\textbackslash{}\+Brief fn read positions of snakes and ladders from file ‘snakesladders.\+dat’ \mbox{\Hypertarget{snakesladders_8c_ad6208df8c5bdccfda1c7d52e3aac1633}\label{snakesladders_8c_ad6208df8c5bdccfda1c7d52e3aac1633}} 
+\index{snakesladders.c@{snakesladders.c}!display\_fstscr@{display\_fstscr}}
+\index{display\_fstscr@{display\_fstscr}!snakesladders.c@{snakesladders.c}}
+\doxysubsubsection{\texorpdfstring{display\_fstscr()}{display\_fstscr()}}
+{\footnotesize\ttfamily void display\+\_\+fstscr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Brief Function to display the first screen of the game. Takes location in form of x,y coordinates prints the name at given position.
+
+\mbox{\hyperlink{snakesladders_8c_ad6208df8c5bdccfda1c7d52e3aac1633}{display\+\_\+fstscr()}} displays the very first screen of the project Get\+Std\+Handle() is used for standard output on console window which is used to color text on the screen \mbox{\Hypertarget{snakesladders_8c_aa3909e0d52143638bad66d5ae96e88f7}\label{snakesladders_8c_aa3909e0d52143638bad66d5ae96e88f7}} 
+\index{snakesladders.c@{snakesladders.c}!draw\_layout@{draw\_layout}}
+\index{draw\_layout@{draw\_layout}!snakesladders.c@{snakesladders.c}}
+\doxysubsubsection{\texorpdfstring{draw\_layout()}{draw\_layout()}}
+{\footnotesize\ttfamily void draw\+\_\+layout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Brief Function to draw a layout for game which is a grid of 10x10.
+
+Draws layout of the game board with yellow colour. Get\+Std\+Handle() is used for standard output on console window which is used to color the grid of layout. Prints squares with values from 1 to 99 and last square with specific symbol to show final point.\mbox{\Hypertarget{snakesladders_8c_a98b805f07e9f140e3a5509d56694ede5}\label{snakesladders_8c_a98b805f07e9f140e3a5509d56694ede5}} 
+\index{snakesladders.c@{snakesladders.c}!draw\_snakesladders@{draw\_snakesladders}}
+\index{draw\_snakesladders@{draw\_snakesladders}!snakesladders.c@{snakesladders.c}}
+\doxysubsubsection{\texorpdfstring{draw\_snakesladders()}{draw\_snakesladders()}}
+{\footnotesize\ttfamily int draw\+\_\+snakesladders (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Brief Function to draw snakes and ladders on the board.
+
+Draws snakes and ladders on the grid of 10x10. Snakes are displayed in red colour, ladders are displayed in green colour. Get\+Std\+Handle() is used for standard output on console window which is used to color snakes and ladders. Positions of snakes and ladders are read from file \textquotesingle{}snakesladders.\+dat\textquotesingle{} and stored in structure \textquotesingle{}\mbox{\hyperlink{structposition__t}{position\+\_\+t}}\textquotesingle{}. \mbox{\Hypertarget{snakesladders_8c_a036b77b9e621c0b0933133aa94027041}\label{snakesladders_8c_a036b77b9e621c0b0933133aa94027041}} 
+\index{snakesladders.c@{snakesladders.c}!get\_password@{get\_password}}
+\index{get\_password@{get\_password}!snakesladders.c@{snakesladders.c}}
+\doxysubsubsection{\texorpdfstring{get\_password()}{get\_password()}}
+{\footnotesize\ttfamily int get\+\_\+password (\begin{DoxyParamCaption}\item[{char $\ast$}]{memory }\end{DoxyParamCaption})}
+
+Brief Function to get password from user. It takes memory pointer as input Gives password as output.
+
+/\+Brief Fn to save the game’ It takes user input for game name and password Saves data in file \textquotesingle{}players.\+dat\textquotesingle{}. \mbox{\Hypertarget{snakesladders_8c_a160f6d2893bb6b89ab3ad5d863c20e3d}\label{snakesladders_8c_a160f6d2893bb6b89ab3ad5d863c20e3d}} 
+\index{snakesladders.c@{snakesladders.c}!getch@{getch}}
+\index{getch@{getch}!snakesladders.c@{snakesladders.c}}
+\doxysubsubsection{\texorpdfstring{getch()}{getch()}}
+{\footnotesize\ttfamily int getch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Brief function defined for functions to be used with cygwin terminal. \mbox{\Hypertarget{snakesladders_8c_ab6b344951638a9e1f5beccd40afe4bd1}\label{snakesladders_8c_ab6b344951638a9e1f5beccd40afe4bd1}} 
+\index{snakesladders.c@{snakesladders.c}!loadgame@{loadgame}}
+\index{loadgame@{loadgame}!snakesladders.c@{snakesladders.c}}
+\doxysubsubsection{\texorpdfstring{loadgame()}{loadgame()}}
+{\footnotesize\ttfamily void loadgame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Brief Function to load any previously saved game. It takes gamename and password as user input Reads data from \textquotesingle{}players.\+dat\textquotesingle{} file Loads game according to data read from file.
+
+\textbackslash{}\+Brief loads previously saved game using gamename and password. \mbox{\Hypertarget{snakesladders_8c_a1dd4feb6757600b8f7ce6195ba7b42bf}\label{snakesladders_8c_a1dd4feb6757600b8f7ce6195ba7b42bf}} 
+\index{snakesladders.c@{snakesladders.c}!locate@{locate}}
+\index{locate@{locate}!snakesladders.c@{snakesladders.c}}
+\doxysubsubsection{\texorpdfstring{locate()}{locate()}}
+{\footnotesize\ttfamily int locate (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+Brief Function to move the cursor to specific position. Input parameters are x-\/coordinate and y-\/co-\/ordinate Places cursor at given coordinate position.
+
+This function sets cursor position to specific coordinates so output can be printed at the location 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x,y} & Coordinates from user \\
+\hline
+\mbox{\texttt{ out}}  & {\em coord} & output at the specific position on the screen \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{snakesladders_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{snakesladders_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{snakesladders.c@{snakesladders.c}!main@{main}}
+\index{main@{main}!snakesladders.c@{snakesladders.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\textbackslash{}\+Brief main function containing functionalities of the main menu page
+
+Expects a user type from the menu options Based on the functionalities provided for the user type and corresponding user inputs from keyboard calls the other functions. \mbox{\Hypertarget{snakesladders_8c_a6587e4379a62f4a3d05f4a3ca5f295f8}\label{snakesladders_8c_a6587e4379a62f4a3d05f4a3ca5f295f8}} 
+\index{snakesladders.c@{snakesladders.c}!main\_game@{main\_game}}
+\index{main\_game@{main\_game}!snakesladders.c@{snakesladders.c}}
+\doxysubsubsection{\texorpdfstring{main\_game()}{main\_game()}}
+{\footnotesize\ttfamily int main\+\_\+game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+All the functions are declared here which will be used in the game for further processing Brief This function decides if player should move, increments players turn and outputs player\textquotesingle{}s new position. Based on if turn is even or odd, function decides which player\textquotesingle{}s turn it is. It does not let player\textquotesingle{}s start playing till they roll 1 or 6. After each turn, function checks if player settles on snake or ladders and changes positions accordingly. Player\textquotesingle{}s keep playing till one of them reaches 100. Player cannot exceed the value of 100.
+
+\textbackslash{}\+Brief\+: This function decides if player should move, increments players turn and outputs player\textquotesingle{}s new position Based on if turn is even or odd, function decides which player\textquotesingle{}s turn it is. It does not let player\textquotesingle{}s start playing till they roll 1 or 6. After each turn, function checks if player settles on snake or ladders and changes positions accordingly. Player\textquotesingle{}s keep playing till one of them reaches 100. Player cannot exceed the value of 100. \mbox{\Hypertarget{snakesladders_8c_af503a31dab280d8d39e1d426a36cb7b9}\label{snakesladders_8c_af503a31dab280d8d39e1d426a36cb7b9}} 
+\index{snakesladders.c@{snakesladders.c}!roll\_dice@{roll\_dice}}
+\index{roll\_dice@{roll\_dice}!snakesladders.c@{snakesladders.c}}
+\doxysubsubsection{\texorpdfstring{roll\_dice()}{roll\_dice()}}
+{\footnotesize\ttfamily int roll\+\_\+dice (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Brief Function to pick a random number between 1 and 6 and return as dice value
+
+\textbackslash{}\+Brief fn to pick a random number between 1 and 6 and return as dice value \mbox{\Hypertarget{snakesladders_8c_a080f5ef7e7f8a73a4e49e5ea040391c3}\label{snakesladders_8c_a080f5ef7e7f8a73a4e49e5ea040391c3}} 
+\index{snakesladders.c@{snakesladders.c}!save\_game@{save\_game}}
+\index{save\_game@{save\_game}!snakesladders.c@{snakesladders.c}}
+\doxysubsubsection{\texorpdfstring{save\_game()}{save\_game()}}
+{\footnotesize\ttfamily void save\+\_\+game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Brief Function to save the game. It takes user input for game name and password Saves data in file \textquotesingle{}players.\+dat\textquotesingle{}.
+
+/brief variable declaration before main function begins 
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{snakesladders_8c_a8d5504470de9fec69f0389092910c500}\label{snakesladders_8c_a8d5504470de9fec69f0389092910c500}} 
+\index{snakesladders.c@{snakesladders.c}!p1@{p1}}
+\index{p1@{p1}!snakesladders.c@{snakesladders.c}}
+\doxysubsubsection{\texorpdfstring{p1}{p1}}
+{\footnotesize\ttfamily int p1 =0}
+
+\mbox{\Hypertarget{snakesladders_8c_a2fbbf5056a49832e7d5e73a15ae2ee05}\label{snakesladders_8c_a2fbbf5056a49832e7d5e73a15ae2ee05}} 
+\index{snakesladders.c@{snakesladders.c}!p2@{p2}}
+\index{p2@{p2}!snakesladders.c@{snakesladders.c}}
+\doxysubsubsection{\texorpdfstring{p2}{p2}}
+{\footnotesize\ttfamily int p2 =0}
+
+\mbox{\Hypertarget{snakesladders_8c_a446442bf1990ba1dfc5398dd7c8328aa}\label{snakesladders_8c_a446442bf1990ba1dfc5398dd7c8328aa}} 
+\index{snakesladders.c@{snakesladders.c}!pdata@{pdata}}
+\index{pdata@{pdata}!snakesladders.c@{snakesladders.c}}
+\doxysubsubsection{\texorpdfstring{pdata}{pdata}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structplayers__t}{players\+\_\+t}} pdata}
+
+Brief variable declaration before main function begins.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em players} & pdata This is the variable of structure \mbox{\hyperlink{structplayers__t}{players\+\_\+t}} \\
+\hline
+\mbox{\texttt{ in}}  & {\em startup} & declaring and initialising startup value. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{snakesladders_8c_ab7862540fda67cb6cc6b55355ecc4e4e}\label{snakesladders_8c_ab7862540fda67cb6cc6b55355ecc4e4e}} 
+\index{snakesladders.c@{snakesladders.c}!startup@{startup}}
+\index{startup@{startup}!snakesladders.c@{snakesladders.c}}
+\doxysubsubsection{\texorpdfstring{startup}{startup}}
+{\footnotesize\ttfamily int startup =46}
+
+\mbox{\Hypertarget{snakesladders_8c_aaefa47f4fdf865c2358c22b542a993e4}\label{snakesladders_8c_aaefa47f4fdf865c2358c22b542a993e4}} 
+\index{snakesladders.c@{snakesladders.c}!turn@{turn}}
+\index{turn@{turn}!snakesladders.c@{snakesladders.c}}
+\doxysubsubsection{\texorpdfstring{turn}{turn}}
+{\footnotesize\ttfamily int turn =1}
+
