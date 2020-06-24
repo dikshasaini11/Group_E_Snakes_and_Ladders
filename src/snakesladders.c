@@ -232,6 +232,104 @@ int main()
 }
 
 /**
+ * \Brief: This function decides if player should move, increments players turn and outputs player's new position
+ *	Based on if turn is even or odd, function decides which player's turn it is. It does not let player's start playing till
+ *	they roll 1 or 6. After each turn, function checks if player settles on snake or ladders and changes positions accordingly.
+ *	Player's keep playing till one of them reaches 100. Player cannot exceed the value of 100.
+ */
+int main_game()
+{
+	/*initialise console screen to print text*/
+
+	HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	/* draw layout */
+	draw_layout();
+	getchar();
+
+	/*p1 is position of player 1. */
+	while (p1!=100&&p2!=100){
+
+	    turn++;
+
+	    /*dice function will return value of dice*/
+
+	    int dice_value=roll_dice();
+
+	    /*if turn no is even, this is used to indicate that it is player one's turn*/
+		if (turn%2==0){
+
+			printf ("\nPlayer 1, it is your turn. Press enter to roll the dice.\n");
+			getchar();
+			/*using value obtained from dice roll function */
+			printf("Player1, The value of your dice is %d\n", dice_value);
+			/* player cannot exceed 100*/
+			if ((p1+dice_value)>100){
+				printf("Player 1, you have exceeded the value of 100. Please wait for your turn and try again\n");
+			}else if (p1==0){
+				/* player can only start playing if the obtain 1 or 6*/
+				if (dice_value==1 || dice_value==6){
+					locate(45,45);
+					printf ("Player 1,you may now start playing the game in your next turn.");
+					p1=1;
+				}
+			}else{
+				/*loop to increment value of p1 according to dice value*/
+				for (int j=1;j<=dice_value;j++){
+					p1=p1+1;
+				}
+				/*checks position to see if it lands on snakes or ladders*/
+				p1=check_snake_ladder(p1);
+				printf("After this turn, your new position  is %d.\n",p1);
+
+				}
+
+			}else {
+			/*repeated for player 2*/
+
+			printf ("Player 2, it is your turn. Press enter to continue.\n");
+			getchar();
+			printf("The value of your dice is %d\n", dice_value);
+			if ((p2+dice_value)>100){
+				  printf("Player 2, you have exceeded the value of 100. Please wait for your turn and try again");
+			}else if (p2==0){
+				if (dice_value==1 || dice_value==6){
+					locate(45,45);
+					printf ("Player 2, you may now start playing the game in your next turn.");
+					p2=1;
+				}
+			}
+			else{
+				for (int j=1;j<=dice_value;j++){
+					p2=p2+1;
+
+
+
+				}
+				p2=check_snake_ladder(p2);
+				printf("After this turn, your new position  is %d. \n",p2);
+
+			 }
+
+		}
+
+	}
+	/*winning condition*/
+	if (p1==100){
+
+		printf("Player 1, you are the winner!");
+
+	}else if(p2==100){
+
+		printf("Player 2, you are the winner!");
+	}
+
+
+
+	return 0;
+
+}
+
+/**
 * This function sets cursor position to specific coordinates so output can be printed at the location
 * @param[in] x, y Coordinates from user 
 * @param[out] coord output at the specific position on the screen
