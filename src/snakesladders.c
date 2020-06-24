@@ -318,7 +318,6 @@ int main_game()
 			}else if (p1==0){
 				/* player can only start playing if the obtain 1 or 6*/
 				if (dice_value==1 || dice_value==6){
-					locate(45,45);
 					printf ("Player 1,you may now start playing the game in your next turn.");
 					p1=1;
 				}
@@ -338,13 +337,28 @@ int main_game()
 			/*repeated for player 2*/
 
 			printf ("Player 2, it is your turn. Press enter to continue.\n");
-			getchar();
+			userch = getchar();
+			if(userch == 'q' || userch == 'Q')
+            {
+                printf ("Do you want to save the game?(y/n)?? ");
+			    scanf (" %c",&savech);
+                if(savech == 'y'||savech == 'Y')
+                {
+                save_game();
+                exit(0);
+                }
+                else
+                {
+                    exit(0);
+                }
+            }
+			else
+			{
 			printf("The value of your dice is %d\n", dice_value);
 			if ((p2+dice_value)>100){
 			printf("Player 2, you have exceeded the value of 100. Please wait for your turn and try again");
 			}else if (p2==0){
 				if (dice_value==1 || dice_value==6){
-					locate(45,45);
 					printf ("Player 2, you may now start playing the game in your next turn.");
 					p2=1;
 				}
@@ -357,6 +371,7 @@ int main_game()
 				printf("After this turn, your new position  is %d. \n",p2);
 
 			 }
+			}
 
 		}
 
