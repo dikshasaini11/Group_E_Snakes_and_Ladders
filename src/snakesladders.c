@@ -177,7 +177,7 @@ int main()
    do{
 	locate (24,24);
 	printf("        Game Starting!!!    \n");
-  printf("------------------------------------------\n\n");
+        printf("------------------------------------------\n\n");
 	
     printf("Main Menu\n");
     printf("1. Press 1 to start a NEW GAME.\n");
@@ -274,13 +274,11 @@ int main()
 int main_game()
 {
 	/*initialise console screen to print text*/
-
+        char userch, savech;
 	HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	system("clear");
 	/* draw layout */
 	draw_layout();
-	getchar();
-
+	
 	/*p1 is position of player 1. */
 	while (p1!=100&&p2!=100){
 
@@ -294,7 +292,24 @@ int main_game()
 		if (turn%2==0){
 
 			printf ("\nPlayer 1, it is your turn. Press enter to roll the dice.\n");
-			getchar();
+			userch = getchar();
+			if(userch == 'q' || userch == 'Q')
+            {
+
+                printf ("Do you want to save the game?(y/n)?? ");
+			    scanf (" %c",&savech);
+                if(savech == 'y'||savech == 'Y')
+                {
+                save_game();
+                exit(0);
+                }
+                else
+                {
+                    exit(0);
+                }
+            }
+			else
+			{
 			/*using value obtained from dice roll function */
 			printf("Player1, The value of your dice is %d\n", dice_value);
 			/* player cannot exceed 100*/
@@ -317,6 +332,7 @@ int main_game()
 				printf("After this turn, your new position  is %d.\n",p1);
 
 				}
+			}
 
 			}else {
 			/*repeated for player 2*/
