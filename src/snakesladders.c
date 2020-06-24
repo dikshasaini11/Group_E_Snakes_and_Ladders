@@ -72,31 +72,31 @@ typedef struct{
 *which will be used in the game for further processing
 *
 */
-
-/** fn to move the cursor  to specific position.
+/** /brief Function to move the cursor  to specific position.
 *Input parameters are x-coordinate and y-co-ordinate.
-*Places cursor at given coordinate position. 
+*Places cursor at given coordinate position.
 */
 int locate(int x,int y);
 
-/** Fn to display the first screen of the game 
-*Takes location in form of x,y coordinates 
+/** /brief Function to display the first screen of the game
+*Takes location in form of x,y coordinates
 *prints the name at given position.
-*/	
+*/
 void display_fstscr();
 
-/** fn to draw a layout for game which is a grid of 10x10*/
+/** /brief Function to draw a layout for game which is a grid of 10x10
+*/
 void draw_layout();
 
-/** fn to draw snakes and ladders on the board */
+/** /brief Function to draw snakes and ladders on the board
+*/
 int draw_snakesladders();
 
-/** fn to pick a random number between 1 and 6 and return as dice value*/
+/** /brief Function to pick a random number between 1 and 6 and return as dice value*/
 
 int roll_dice();
 
-/**
- * \Brief fn read positions of snakes and ladders from file ‘snakesladders.dat’
+/** /Brief Function to read positions of snakes and ladders from file ‘snakesladders.dat’
  */
 
 int check_snake_ladder(int current_position);
