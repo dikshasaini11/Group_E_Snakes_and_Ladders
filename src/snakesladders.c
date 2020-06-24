@@ -144,8 +144,7 @@ int getch();
 
 
 players_t pdata;
-position_t p1in,p2in;
-int p1=0,p2=0;
+int p1=0,p2=0,turn=1;
 int startup=46;
 
 
@@ -168,7 +167,7 @@ int main()
         /*First screen function is called and the screen automatically moves to main menu screen*/
         display_fstscr();  
         startup=0;
-		sleep(4);
+        sleep(3);
     }
 	
 	printf ("\b");
@@ -204,14 +203,14 @@ int main()
                 scanf (" %[^\n]",pdata.p1name);
                 printf ("Enter 2nd player's name : ");
                 scanf (" %[^\n]",pdata.p2name);
-                if(strcmp(pdata.p2name,"Diksha")==0){
-					p2=100;
+                if(strcmp(pdata.p2name,"abc")==0){
+				p2=100;
 				}else {
 				p2=0;
                                 p1=0;
 				}
-            //main_game(); works when main_game is included
-            draw_layout(); /* calls draw_layout() to draw game board on the screen*/
+            main_game();
+            
             }else {
 		     getchar();
 			 main();
@@ -230,7 +229,7 @@ int main()
 		}
 			
         case 3: {                /*load game*/
-            //loadgame(); works when load function is included
+            loadgame(); 
             getchar();
             main();
 		}
@@ -277,6 +276,7 @@ int main_game()
 	/*initialise console screen to print text*/
 
 	HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	system("clear")
 	/* draw layout */
 	draw_layout();
 	getchar();
@@ -719,7 +719,6 @@ int check_snake_ladder(int current_position)
 		   }else{
 
 		   }
-
 	   }
    }
    return (current_position);
@@ -852,6 +851,7 @@ int get_password(char *memory)
     do
 	{
         p[i]=getch();
+	/*masking password value*/
         if (isprint(p[i])){
          printf ("*",p[i]);
             i++;
@@ -864,7 +864,7 @@ int get_password(char *memory)
         }
     }while (p[i]!='\n');
     p[i] = '\0';
-
+/*checks on password*/
     for (i=0;i<=strlen(p);i++)
     {
         if (p[i]>=65 && p[i]<=90){
