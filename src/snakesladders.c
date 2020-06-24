@@ -72,6 +72,14 @@ typedef struct{
 *which will be used in the game for further processing
 *
 */
+/**
+ * \Brief: This function decides if player should move, increments players turn and outputs player's new position
+ *	Based on if turn is even or odd, function decides which player's turn it is. It does not let player's start playing till
+ *	they roll 1 or 6. After each turn, function checks if player settles on snake or ladders and changes positions accordingly.
+ *	Player's keep playing till one of them reaches 100. Player cannot exceed the value of 100.
+ */
+int main_game();
+	
 /** /brief Function to move the cursor  to specific position.
 *Input parameters are x-coordinate and y-co-ordinate.
 *Places cursor at given coordinate position.
@@ -100,15 +108,6 @@ int roll_dice();
  */
 
 int check_snake_ladder(int current_position);
-
-/**
- * \Brief: This function decides if player should move, increments players turn and outputs player's new position
- *	Based on if turn is even or odd, function decides which player's turn it is. It does not let player's start playing till
- *	they roll 1 or 6. After each turn, function checks if player settles on snake or ladders and changes positions accordingly.
- *	Player's keep playing till one of them reaches 100. Player cannot exceed the value of 100.
- */
-
-int main_game();
 
 /**
 * /brief variable declaration before main function begins
