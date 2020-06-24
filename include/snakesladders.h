@@ -3,10 +3,6 @@
 
 /** @brief Function decides if player should move, increments players turn and outputs player's new position
 *
-*	Based on if turn is even or odd, function decides which player's turn it is. It does not let player's start playing till
-*
-*	they roll 1 or 6. After each turn, function checks if player settles on snake or ladders and changes positions accordingly.
-*
 *	Player's keep playing till one of them reaches 100. Player cannot exceed the value of 100.
 *
 */
@@ -16,11 +12,7 @@ int main_game()
 
 /**  @brief Function prototypes to move the cursor  to specific position
 * 
-* This Function is used to move the curser to specific position
-*
-* Input parameters are x-coordinate and y-coordinate
-*
-* This Function places curser at given coordinate position
+* This Function places curser at given coordinate position and takes Input parameters are x-coordinate and y-coordinate
 *
 *
 */
@@ -28,13 +20,9 @@ int main_game()
 int locate(int x,int y);
 
 
-/** @brief Function prototypes to display the first screen of the game
+/** @brief Function prototype to display the first screen of the game
 *
-* This Function is used to display the first screen of the game
-*
-* This Funtion takes the location in form of x,y coordinates
-*
-* This Function prints the name at given location
+* This Function is used to display the first screen of the game and takes the location in form of x,y coordinates
 *
 *
 */
@@ -80,28 +68,32 @@ int roll_dice()
 int check_snake_ladder(int current_position)
 
 
-void loadgame();
+
+  
+  
+ void loadgame();
+
+
 
 /** /Brief Function to get password from user’
 * It takes memory pointer as input
 * Gives password as output.
 */
 
+
 int get_password(char *memory);
+
+
 
 /** /Brief Function to save the game’
 * It takes user input for game name and password
 * Saves data in file 'players.dat'.
 */
 
+
 void save_game();
 
-/**
-* /brief variable declaration before main function begins
-*
-* @param[in] players pdata This is the variable of structure players_t
-* @param[in] startup declaring and initialising startup value.. 
-*/
+
 
 /**
 * /brief function defined for functions to be used with cygwin terminal*/
