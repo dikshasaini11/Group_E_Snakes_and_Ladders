@@ -79,4 +79,32 @@ int roll_dice()
 
 int check_snake_ladder(int current_position)
 
+
+void loadgame();
+
+/** /Brief Function to get password from user’
+* It takes memory pointer as input
+* Gives password as output.
+*/
+
+int get_password(char *memory);
+
+/** /Brief Function to save the game’
+* It takes user input for game name and password
+* Saves data in file 'players.dat'.
+*/
+
+void save_game();
+
+/**
+* /brief variable declaration before main function begins
+*
+* @param[in] players pdata This is the variable of structure players_t
+* @param[in] startup declaring and initialising startup value.. 
+*/
+
+/**
+* /brief function defined for functions to be used with cygwin terminal*/
+int getch();
+
 #endif
