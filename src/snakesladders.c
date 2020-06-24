@@ -175,18 +175,18 @@ int main()
 	
 	/*Expected User input to proceed further in the game*/
    do{
-	locate (24,24);
-	printf("        Game Starting!!!    \n");
-  printf("------------------------------------------\n\n");
-	
-    printf("Main Menu\n");
-    printf("1. Press 1 to start a NEW GAME.\n");
-    printf("2. Press 2 to RESUME.\n");
-    printf("3. Press 3 to LOAD GAME.\n");
-    printf("4. Press 4 to EXIT.\n");
-    
-    printf(" Please enter an option from the main menu: ");
-    scanf("%d",&option);
+	    locate (24,24);
+	    printf("        Game Starting!!!    \n");
+	    printf("------------------------------------------\n\n");
+
+	    printf("Main Menu\n");
+	    printf("1. Press 1 to start a NEW GAME.\n");
+	    printf("2. Press 2 to RESUME.\n");
+	    printf("3. Press 3 to LOAD GAME.\n");
+	    printf("4. Press 4 to EXIT.\n");
+
+	    printf(" Please enter an option from the main menu: ");
+	    scanf("%d",&option);
 	
 	system("clear");
 	/* switch case 'option' to operate menu options*/
@@ -195,7 +195,7 @@ int main()
             system("clear");                 
             locate (20,25);
             printf ("This will Start a New Game Continue?(y/n)?? ");
-			scanf (" %c",&choice);
+	    scanf (" %c",&choice);
             
             if (choice=='y' || choice=='Y'){
                 startup=1;
@@ -208,8 +208,9 @@ int main()
 				}else {
 				p2=0;
                                 p1=0;
+			        turn = 1;
 				}
-            main_game();
+             main_game();
             
             }else {
 		     getchar();
@@ -274,12 +275,10 @@ int main()
 int main_game()
 {
 	/*initialise console screen to print text*/
-
+        char userch,savech;
 	HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	system("clear")
 	/* draw layout */
 	draw_layout();
-	getchar();
 
 	/*p1 is position of player 1. */
 	while (p1!=100&&p2!=100){
@@ -294,7 +293,24 @@ int main_game()
 		if (turn%2==0){
 
 			printf ("\nPlayer 1, it is your turn. Press enter to roll the dice.\n");
-			getchar();
+			userch = getchar();
+			if(userch == 'q' || userch == 'Q')
+            {
+
+                printf ("Do you want to save the game?(y/n)?? ");
+			    scanf (" %c",&savech);
+                if(savech == 'y'||savech == 'Y')
+                {
+                save_game();
+                exit(0);
+                }
+                else
+                {
+                    exit(0);
+                }
+            }
+			else
+			{
 			/*using value obtained from dice roll function */
 			printf("Player1, The value of your dice is %d\n", dice_value);
 			/* player cannot exceed 100*/
@@ -303,7 +319,6 @@ int main_game()
 			}else if (p1==0){
 				/* player can only start playing if the obtain 1 or 6*/
 				if (dice_value==1 || dice_value==6){
-					locate(45,45);
 					printf ("Player 1,you may now start playing the game in your next turn.");
 					p1=1;
 				}
@@ -322,13 +337,28 @@ int main_game()
 			/*repeated for player 2*/
 
 			printf ("Player 2, it is your turn. Press enter to continue.\n");
-			getchar();
+			userch = getchar();
+			if(userch == 'q' || userch == 'Q')
+            {
+                printf ("Do you want to save the game?(y/n)?? ");
+			    scanf (" %c",&savech);
+                if(savech == 'y'||savech == 'Y')
+                {
+                save_game();
+                exit(0);
+                }
+                else
+                {
+                    exit(0);
+                }
+            }
+				else
+				{
 			printf("The value of your dice is %d\n", dice_value);
 			if ((p2+dice_value)>100){
 				  printf("Player 2, you have exceeded the value of 100. Please wait for your turn and try again");
 			}else if (p2==0){
 				if (dice_value==1 || dice_value==6){
-					locate(45,45);
 					printf ("Player 2, you may now start playing the game in your next turn.");
 					p2=1;
 				}
@@ -346,6 +376,7 @@ int main_game()
 			 }
 
 		}
+			}
 
 	}
 	/*winning condition*/
