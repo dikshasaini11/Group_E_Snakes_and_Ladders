@@ -51,8 +51,8 @@ To run, you must first install it. Further, you can follow instructions mentione
 
 # Detailed Instructions
 
-Detailed instructions for user is found in *usermanuallink*. 
-Detailed instructions for developer is found in *developermanuallink*.
+Detailed instructions for user can be found here https://github.com/dikshasaini11/Group_E_Snakes_and_Ladders/blob/Main_Development/doc/User_Manual.docx
+Detailed instructions for developer can be found here https://github.com/dikshasaini11/Group_E_Snakes_and_Ladders/blob/Main_Development/doc/Developer_Guide.docx
 
 
 # License 
