@@ -42,17 +42,18 @@ Below are the rules of the game under which we will design an application.
 
 # Installation
 
-Instructions to install are in *usermanuallink*.
+Instructions to install are in https://github.com/dikshasaini11/Group_E_Snakes_and_Ladders/blob/Main_Development/doc/User_Manual.docx.
 
 # Usage
 
-To run, you must first install it. Further, you can follow instructions mentioned in *usermanuallink*.
+To run, you must first install it. Further, you can follow instructions mentioned in https://github.com/dikshasaini11/Group_E_Snakes_and_Ladders/blob/Main_Development/doc/User_Manual.docx
 
 
 # Detailed Instructions
 
 Detailed instructions for user can be found here https://github.com/dikshasaini11/Group_E_Snakes_and_Ladders/blob/Main_Development/doc/User_Manual.docx
 Detailed instructions for developer can be found here https://github.com/dikshasaini11/Group_E_Snakes_and_Ladders/blob/Main_Development/doc/Developer_Guide.docx
+We have created another version of code in 'Codeblocks IDE with GNU GCC compiler' for proper graphics. It can be found here https://github.com/dikshasaini11/Group_E_Snakes_and_Ladders/blob/Main_Development/src/CodeblocksVersion.c
 
 
 # License 
