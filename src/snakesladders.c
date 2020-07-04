@@ -54,7 +54,7 @@ typedef struct{
     char p1name[20];
     char p2name[20];
     char gamename[20];
-    char password[10];
+    char password[11];
 }players_t;
 
 /**
@@ -275,7 +275,6 @@ int main_game()
 {
 	/*initialise console screen to print text*/
         char userch, savech;
-	HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	/* draw layout */
 	draw_layout();
 	
@@ -698,7 +697,7 @@ int draw_snakesladders()
 
         }
     }
-
+   fclose(file);
    locate(0,20);
    SetConsoleTextAttribute(hConsole,FOREGROUND_BLUE+FOREGROUND_RED+FOREGROUND_GREEN+FOREGROUND_RED+FOREGROUND_RED);
    return 0;
@@ -854,7 +853,6 @@ void save_game()
 int get_password(char *memory)
 {
     int i=0;
-	int flag=0;
         char p[11]="";
 	int upper=0, lower=0, digit=0;
       /*To call the function again on invalid entry*/ 
